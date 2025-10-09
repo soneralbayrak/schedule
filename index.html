@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Page with Tabs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Schedule, Appointments, and all that</h1>
+    <p>soneralbayrak.com</p>
+  </header>
+<main>
+
+<div align="center">
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Information')" id="defaultOpen">Information</button>
+  <button class="tablinks" onclick="openCity(event, 'Schedule')">My weekly schedule</button>
+  <button class="tablinks" onclick="openCity(event, 'Appointment')">Make an appointment</button>
+</div>
+</div>
+
+<div id="Information" class="tabcontent">
+  <ul class="fancy-list">
+    <li><i data-lucide="map-pin"></i> My office is in the Physics department at METU, room 413: whoever you are, please feel welcome to give me a visit if you wish so!</li>
+
+    <li><i data-lucide="clock"></i> My schedule changes each academic semester, however it always contains <em>"Office Hours"</em>: if you are a student of mine and you have a course related question, I guarantee to be available at the office hours. Please feel free to stop by my office in other cases as well, however I might or might not be available.</li>
+
+    <li><i data-lucide="calendar-plus"></i> My schedule also contains slots for appointments: please feel free to make an appointment if you would like to have a chat with me (about anything really) regardless of whether you are a student of mine or even affiliated with METU.</li>
+
+    <li><i data-lucide="alert-circle"></i> Beware: my schedule might change unannounced and it may not be applicable during holidays or my academic travels.</li>
+
+    <li><i data-lucide="globe"></i> If you would like to contact me through online means, see <a href="https://soneralbayrak.com/">https://soneralbayrak.com/</a></li>
+  </ul>
+</div>
+
+<div id="Schedule" class="tabcontent">
+  <div align="center"><img src="images/schedule.png" alt="Example" style="max-width: 800px; width: 100%; height: auto;"></div>
+
+</div>
+
+<div id="Appointment" class="tabcontent">
+<!-- Google Calendar Appointment Scheduling begin -->
+<div align="center"><em>You may schedule a meeting for any available slot within next two weeks.<em></div>
+<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0YQ2Imkvb7aDQ3RszCe5autOoKaFRNcjiiw27m22VTrHfhN_YEKWQ9UbsR5fa8CfyFDdUn0aWU?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+<!-- end Google Calendar Appointment Scheduling -->
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+</main>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
+
+
+</body>
+
+  <footer>
+    <p>Copyright &copy; by Soner Albayrak | All rights reserved</p>
+  </footer>
+</html> 
