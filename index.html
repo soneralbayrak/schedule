@@ -1,87 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schedule, Appointments, and all that</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>
+/* Theme: apply a saved choice before the first paint so the page never
+   flashes the wrong colours. Without a saved choice, or without JavaScript,
+   the page follows the system setting. The toggle itself is in js/main.js.
+   The choice is shared with the teaching pages (same site, same key). */
+(function () {
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+})();
+</script>
+<title>Schedule, Appointments, and all that — Soner Albayrak</title>
+<meta name="description" content="Office, weekly schedule, and appointments of Soner Albayrak at the Department of Physics, Middle East Technical University.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/schedule.css">
 </head>
-
 <body>
-  <header>
+
+<!-- Running head: shows the current section while scrolling (like \rightmark). -->
+<header class="running-head">
+  <div class="inner">
+    <a target="_blank" rel="noopener noreferrer" href="https://soneralbayrak.com/">Soner Albayrak</a>
+    <span class="mark" id="mark" aria-hidden="true">Schedule</span>
+  </div>
+</header>
+
+<div class="paper">
+
+  <!-- ============================================================ -->
+  <!-- \maketitle                                                    -->
+  <!-- No "Last revised" line here: the schedule is updated by      -->
+  <!-- replacing images/schedule.png, which leaves this file as it  -->
+  <!-- is, so a date would soon be wrong. The image names its own   -->
+  <!-- semester.                                                     -->
+  <!-- ============================================================ -->
+  <header class="titleblock" id="top">
     <h1>Schedule, Appointments, and all that</h1>
-    <p>soneralbayrak.com</p>
+    <p class="author">Soner Albayrak</p>
+    <p class="affil">Department of Physics, Middle East Technical University</p>
   </header>
-<main>
 
-<div align="center">
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Information')" id="defaultOpen">Information</button>
-  <button class="tablinks" onclick="openCity(event, 'Schedule')">My weekly schedule</button>
-  <button class="tablinks" onclick="openCity(event, 'Appointment')">Make an appointment</button>
-</div>
-</div>
+  <div class="body-grid">
 
-<div id="Information" class="tabcontent">
-  <ul class="fancy-list">
-    <li><i data-lucide="map-pin"></i> My office is in the Physics department at METU, room 413: whoever you are, please feel welcome to give me a visit if you wish so!</li>
+    <!-- ============================================================ -->
+    <!-- \tableofcontents                                              -->
+    <!-- If you add a section below, add a matching line here.         -->
+    <!-- ============================================================ -->
+    <nav class="toc" aria-label="Contents">
+      <p class="toc-title sc">Contents</p>
+      <ol>
+        <li><a href="#information"><span class="num">1</span>Information</a></li>
+        <li><a href="#schedule"><span class="num">2</span>My weekly schedule</a></li>
+        <li><a href="#appointment"><span class="num">3</span>Make an appointment</a></li>
+      </ol>
+    </nav>
 
-    <li><i data-lucide="clock"></i> My schedule changes each academic semester; however, it always contains <em>"Office Hours"</em>: if you are a student of mine and you have a course-related question, I guarantee to be available during the office hours.</li>
-      
-    <li><i data-lucide="users"></i> Please feel free to stop by my office in other cases as well (especially during <em>"Open Hours"</em>); however, I might or might not be available.</li>
+    <main>
 
-    <li><i data-lucide="calendar-plus"></i> My schedule also contains slots for appointments: please feel free to make an appointment if you would like to have a chat with me (about anything really), regardless of whether you are a student of mine or even affiliated with METU.</li>
+      <!-- ============================================================ -->
+      <!-- 1  INFORMATION                                                -->
+      <!-- One <li> per item; the icon is the <svg> at its start.        -->
+      <!-- Icons from Lucide (https://lucide.dev), © Lucide Icons and    -->
+      <!-- Contributors, ISC License; "clock" and "circle-alert" come    -->
+      <!-- from Feather, © Cole Bemis, MIT License. They are written     -->
+      <!-- into the page so that nothing is loaded from elsewhere.       -->
+      <!-- ============================================================ -->
+      <section id="information">
+        <h2><span class="num">1</span>Information</h2>
+        <ul class="icons">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            My office is in the Physics department at METU, room 413: whoever you are, please feel welcome to give me a visit if you wish so!</li>
 
-    <li><i data-lucide="alert-circle"></i> Beware: my schedule might change unannounced, and it may not be applicable during holidays or my academic travels.</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            My schedule changes each academic semester; however, it always contains <em>“Office Hours”</em>: if you are a student of mine and you have a course-related question, I guarantee to be available during the office hours.</li>
 
-    <li><i data-lucide="globe"></i> If you would like to contact me through online means, see <a href="https://soneralbayrak.com/">https://soneralbayrak.com/</a></li>
-  </ul>
-</div>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+            Please feel free to stop by my office in other cases as well (especially during <em>“Open Hours”</em>); however, I might or might not be available.</li>
 
-<div id="Schedule" class="tabcontent">
-  <div align="center"><img src="images/schedule.png" alt="Example" style="max-width: 800px; width: 100%; height: auto;"></div>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 18h6"/><path d="M16 2v3"/><path d="M19 15v6"/><path d="M21 11.5V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h8.3"/><path d="M3 9h18"/><path d="M8 2v3"/></svg>
+            My schedule also contains slots for appointments: please feel free to make an appointment if you would like to have a chat with me (about anything really), regardless of whether you are a student of mine or even affiliated with METU.</li>
 
-</div>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+            Beware: my schedule might change unannounced, and it may not be applicable during holidays or my academic travels.</li>
 
-<div id="Appointment" class="tabcontent">
-<!-- Google Calendar Appointment Scheduling begin -->
-<div align="center"><em>You may schedule a meeting for any available slot within next two weeks. Please do not make a second or more appointment without attending the first one.<em></div>
-<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0YQ2Imkvb7aDQ3RszCe5autOoKaFRNcjiiw27m22VTrHfhN_YEKWQ9UbsR5fa8CfyFDdUn0aWU?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
-<!-- end Google Calendar Appointment Scheduling -->
-</div>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            If you would like to contact me through online means, see <a target="_blank" rel="noopener noreferrer" href="https://soneralbayrak.com/">my home page<span class="ft">web</span></a></li>
+        </ul>
+      </section>
 
-<script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
+      <!-- ============================================================ -->
+      <!-- 2  WEEKLY SCHEDULE                                            -->
+      <!-- Each semester: replace images/schedule.png; nothing here      -->
+      <!-- needs to change. (width/height only reserve space while the   -->
+      <!-- image loads; the image's own proportions take over after.)    -->
+      <!-- ============================================================ -->
+      <section id="schedule">
+        <h2><span class="num">2</span>My weekly schedule</h2>
+        <figure class="timetable">
+          <a target="_blank" rel="noopener noreferrer" href="images/schedule.png"><img src="images/schedule.png" width="9061" height="6052" decoding="async" alt="My weekly schedule for the current semester"></a>
+          <figcaption><a target="_blank" rel="noopener noreferrer" href="images/schedule.png">Full-size image<span class="ft">png</span></a></figcaption>
+        </figure>
+      </section>
 
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-   
-</main>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-  lucide.createIcons();
-</script>
+      <!-- ============================================================ -->
+      <!-- 3  APPOINTMENTS                                               -->
+      <!-- The booking form is Google Calendar's appointment page.       -->
+      <!-- ============================================================ -->
+      <section id="appointment">
+        <h2><span class="num">3</span>Make an appointment</h2>
+        <p>You may schedule a meeting for any available slot within next two weeks. Please do not make a second or more appointment without attending the first one.</p>
+        <iframe class="booking" title="Appointment booking (Google Calendar)" loading="lazy" src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0YQ2Imkvb7aDQ3RszCe5autOoKaFRNcjiiw27m22VTrHfhN_YEKWQ9UbsR5fa8CfyFDdUn0aWU?gv=true"></iframe>
+      </section>
 
+    </main>
+  </div>
 
-</body>
-
-  <footer>
-    <p>Copyright &copy; by Soner Albayrak | All rights reserved</p>
+  <footer class="colophon">
+    <p>© Soner Albayrak. All rights reserved.</p>
+    <p><span class="ai-badge">
+  <svg viewBox="0 0 566.93 566.93" aria-hidden="true" focusable="false">
+    <path fill="currentColor" fill-rule="evenodd" d="M272.03,100.72c100.92,0,182.74,81.82,182.74,182.75s-81.82,182.74-182.74,182.74-182.75-81.82-182.75-182.74,81.82-182.75,182.75-182.75"/>
+    <g fill="var(--paper)">
+      <path d="M170.79,353.74c-1.08,0-2.05-.43-2.92-1.31-.88-.87-1.31-1.84-1.31-2.92,0-.67.07-1.27.2-1.81l47.34-129.32c.4-1.48,1.24-2.79,2.52-3.93,1.27-1.14,3.05-1.71,5.34-1.71h29.81c2.28,0,4.06.57,5.34,1.71,1.27,1.14,2.11,2.45,2.52,3.93l47.14,129.32c.27.54.4,1.14.4,1.81,0,1.08-.44,2.05-1.31,2.92s-1.91,1.31-3.12,1.31h-24.78c-2.01,0-3.52-.5-4.53-1.51-1.01-1.01-1.65-1.91-1.91-2.72l-7.86-20.55h-53.78l-7.65,20.55c-.27.81-.88,1.71-1.81,2.72-.94,1.01-2.55,1.51-4.83,1.51h-24.78ZM218.13,299.96h37.47l-18.93-53.18-18.53,53.18Z"/>
+      <path d="M328.11,353.74c-1.48,0-2.69-.47-3.63-1.41-.94-.94-1.41-2.15-1.41-3.63v-130.93c0-1.48.47-2.68,1.41-3.63s2.15-1.41,3.63-1.41h26.99c1.48,0,2.68.47,3.63,1.41.94.94,1.41,2.15,1.41,3.63v130.93c0,1.48-.47,2.69-1.41,3.63-.94.94-2.15,1.41-3.63,1.41h-26.99Z"/>
+    </g>
+  </svg>
+  AI was used in the design of this page.
+</span></p>
   </footer>
-</html> 
 
+</div>
 
-
+<script src="js/main.js"></script>
+</body>
+</html>
